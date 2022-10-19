@@ -25,9 +25,19 @@ public class Interfaz {
         do{
             System.out.println("Para salir introduzca 0");
             System.out.println("Para ver un elemento introduzca la posición del elemento");
+            System.out.println("Para añadir un elemento introduzca -1");
             opcionElegida = scanner.nextInt();
-            if (opcionElegida != 0){
+            if (opcionElegida != 0 && opcionElegida != -1){
                 mostrarElemento(opcionElegida);
+            }
+            if (opcionElegida == -1){
+                System.out.println("Que elemento desea añadir?");
+                String nuevoElemento = scanner.next();
+                try {
+                    listaDeLaCompra.insertarElemento(nuevoElemento);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }while (opcionElegida != 0);
 
