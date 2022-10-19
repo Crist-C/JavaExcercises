@@ -33,13 +33,14 @@ public class ListaDeLaCompra {
 
     public void insertarElemento(String elemento) throws IOException {
 
-        FileWriter fstream = new FileWriter(archivo, true);
+        BufferedWriter out = null;
 
         // Se usa Out como recurso para el TRY.
         // Un recurso es un objeto que debe ser cerrado cuando se ha terminado de usar.
         // El try se encargará de cerrar los recursos después de usarlos en el try
-        try (BufferedWriter out = new BufferedWriter(fstream)){
-            out.close();
+        try {
+            FileWriter fstream = new FileWriter(archivo, true);
+            out = new BufferedWriter(fstream);
             out.write("\n"+elemento);
             cargarLista(archivo);
             System.out.println("Bloque try ejecutado por completo");
