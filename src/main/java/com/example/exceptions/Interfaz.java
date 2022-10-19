@@ -45,7 +45,11 @@ public class Interfaz {
     }
 
     private void mostrarElemento(int indice){
-        System.out.println("El elemento numero "+ indice+ " de la lista es "+listaDeLaCompra.obtenerElemento(indice));
+        try {
+            System.out.println("El elemento numero "+ indice+ " de la lista es "+listaDeLaCompra.obtenerElemento(indice));
+        } catch (PositionException | ArrayIndexOutOfBoundsException e) {
+            System.out.println("El elemento de la lista no existe: "+e.getMessage());
+        }
     }
 
 }
